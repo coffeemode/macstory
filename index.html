@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>الحكاية — الصفحة الأولى</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 50% 30%, rgba(72, 65, 110, 0.20), transparent 35%),
+        linear-gradient(145deg, #080914, #101225 55%, #080914);
+
+      color: #f4efe7;
+      font-family: "Cairo", sans-serif;
+
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.025) 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.02) 1px, transparent 1px);
+
+      background-size: 90px 90px, 120px 120px;
+
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 720px;
+
+      padding: 30px 22px;
+      margin: auto;
+    }
+
+    .page {
+      width: 100%;
+      text-align: center;
+
+      animation: appear 0.6s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .small-title {
+      font-size: 13px;
+      font-weight: 400;
+
+      color: #b9b2a7;
+
+      letter-spacing: 1px;
+
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: 500;
+
+      color: #f5eee4;
+
+      margin: 0 0 30px;
+    }
+
+    .opening {
+      font-size: 24px;
+      color: #d9c8a9;
+
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+
+    .story {
+      font-size: 17px;
+      line-height: 2.2;
+
+      color: #dedbd6;
+
+      font-weight: 300;
+    }
+
+    .story p {
+      margin: 0 0 22px;
+    }
+
+    .highlight {
+      color: #d9c8a9;
+      font-weight: 500;
+    }
+
+    .divider {
+      width: 45px;
+      height: 1px;
+
+      background: #8f8068;
+
+      margin: 30px auto;
+      opacity: 0.6;
+    }
+
+    /* مساحة الكتابة */
+
+    .writing-area {
+      margin-top: 42px;
+    }
+
+    .writing-title {
+      font-size: 15px;
+      color: #d9c8a9;
+
+      margin-bottom: 14px;
+      font-weight: 400;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 170px;
+
+      resize: vertical;
+
+      padding: 18px 18px;
+
+      border-radius: 14px;
+
+      border: 1px solid rgba(217, 200, 169, 0.25);
+
+      background: rgba(255,255,255,0.025);
+
+      color: #eee9e1;
+
+      font-family: "Cairo", sans-serif;
+      font-size: 15px;
+      line-height: 2;
+
+      outline: none;
+
+      transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    textarea::placeholder {
+      color: #8f8b84;
+    }
+
+    textarea:focus {
+      border-color: rgba(217, 200, 169, 0.65);
+
+      background: rgba(217, 200, 169, 0.035);
+
+      box-shadow: 0 0 20px rgba(217, 200, 169, 0.04);
+    }
+
+    .send-area {
+      margin-top: 18px;
+    }
+
+    .send-button {
+      border: 1px solid rgba(217, 200, 169, 0.45);
+
+      background: rgba(217, 200, 169, 0.06);
+
+      color: #eee6d9;
+
+      font-family: "Cairo", sans-serif;
+      font-size: 15px;
+
+      padding: 12px 30px;
+
+      border-radius: 30px;
+
+      cursor: pointer;
+
+      transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .send-button:hover {
+      background: rgba(217, 200, 169, 0.14);
+
+      border-color: rgba(217, 200, 169, 0.8);
+
+      transform: translateY(-2px);
+    }
+
+    .send-button:disabled {
+      opacity: 0.6;
+      cursor: default;
+      transform: none;
+    }
+
+    .success-message {
+      display: none;
+
+      margin-top: 18px;
+
+      color: #b9b2a7;
+
+      font-size: 14px;
+
+      line-height: 1.9;
+
+      animation: appear 0.6s ease;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        padding: 25px 20px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .opening {
+        font-size: 21px;
+      }
+
+      .story {
+        font-size: 15px;
+        line-height: 2.15;
+      }
+
+      textarea {
+        font-size: 14px;
+        min-height: 160px;
+      }
+
+      .send-button {
+        font-size: 14px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <div class="container">
+
+    <section class="page">
+
+      <div class="small-title">
+        حكاية صغيرة...
+      </div>
+
+      <div class="opening">
+        الحكاية — الصفحة الأولى
+      </div>
+
+
+      <div class="story">
+
+        <p>
+          لم تكن تعرف أن هذا اليوم سيُكتب يومًا ما.
+        </p>
+
+        <p>
+          بالنسبة لها، كان مجرد يوم آخر.
+        </p>
+
+        <p>
+          يوم يبدأ قبل أن تكون مستعدة له، ويمضي أسرع مما تتمنى، وينتهي وهي تحاول أن تتذكر إن كانت فعلت كل الأشياء التي كان عليها فعلها.
+        </p>
+
+        <p>
+          استيقظت، استعدت، وخرجت.
+        </p>
+
+        <p>
+          لم يكن لديها وقت طويل لتفكر.
+        </p>
+
+        <p>
+          هناك دائمًا شيء ينتظرها.
+        </p>
+
+        <p>
+          عمل يجب أن تنهيه،<br>
+          ودراسة يجب أن تلحق بها،<br>
+          وأشياء صغيرة تتراكم فوق بعضها حتى تصبح في نهاية اليوم أكبر مما تبدو عليه في الصباح.
+        </p>
+
+        <p>
+          ومع ذلك، كانت تمضي.
+        </p>
+
+        <p>
+          ربما لأنها اعتادت.
+        </p>
+
+        <p>
+          وربما لأنها لم تجد وقتًا كافيًا لتتساءل إن كان من المفترض أن تكون متعبة أصلًا.
+        </p>
+
+        <p>
+          كانت تضحك أحيانًا، وتتحدث مع من حولها، وتبدو طبيعية جدًا.
+        </p>
+
+        <p>
+          وهذا تحديدًا ما يجعل التعب صعب الملاحظة.
+        </p>
+
+        <p>
+          فليس كل شخص متعب يبدو متعبًا.
+        </p>
+
+        <p>
+          بعض الناس يتقنون إخفاءه إلى درجة أنهم ينسون هم أنفسهم كيف يبدو عندما يظهر.
+        </p>
+
+        <p>
+          كانت من هؤلاء.
+        </p>
+
+
+        <div class="divider"></div>
+
+
+        <p>
+          وفي أحد الأيام، بينما كانت منشغلة بيومها، حدث شيء صغير جدًا.
+        </p>
+
+        <p>
+          لا يستحق أن تتوقف عنده عادة.
+        </p>
+
+        <p>
+          نظرة.
+        </p>
+
+        <p>
+          ثم سؤال.
+        </p>
+
+        <p>
+          ثم حديث قصير مع شخص لم تكن تعرف أنه سيتذكر ذلك الحديث بعد أن ينتهي.
+        </p>
+
+        <p>
+          كان الحديث عن الحكايات.
+        </p>
+
+        <p>
+          عن الكتابة.
+        </p>
+
+        <p>
+          وعن رأيها فيها.
+        </p>
+
+        <p>
+          قالت إنها لا تمانع.
+        </p>
+
+        <p>
+          ثم قالت، بعفوية، شيئًا ربما لم تفكر فيه كثيرًا:
+        </p>
+
+        <p class="highlight">
+          «بس رأيي ما أتوقع بيهمك.»
+        </p>
+
+        <p>
+          ومضى الحديث بعدها.
+        </p>
+
+        <p>
+          لكن الجملة لم تمضِ بالسهولة نفسها.
+        </p>
+
+        <p>
+          لأنها، دون أن تعرف، كانت قد قالت شيئًا أكبر مما تقصده.
+        </p>
+
+        <p>
+          ربما لأنها اعتادت أن تعطي آراءها بهدوء، ثم تعود إلى الأشياء التي تنتظرها.
+        </p>
+
+        <p>
+          وربما لأنها لم تتوقع أصلًا أن أحدًا قد يهتم فعلًا بما تفكر فيه.
+        </p>
+
+
+        <div class="divider"></div>
+
+
+        <p>
+          ثم جاء سؤال آخر:
+        </p>
+
+        <p>
+          هل تستطيعين قراءة رواية طويلة؟
+        </p>
+
+        <p>
+          فكرت قليلًا.
+        </p>
+
+        <p>
+          ثم كان جوابها منطقيًا جدًا.
+        </p>
+
+        <p class="highlight">
+          صعب.
+        </p>
+
+        <p>
+          ليس لأنها لا تحب القصص.
+        </p>
+
+        <p>
+          ولكن لأن الوقت شيء آخر لا تملكه بسهولة.
+        </p>
+
+        <p>
+          فالعمل يأخذ جزءًا من اليوم.
+        </p>
+
+        <p>
+          والدراسة تأخذ جزءًا آخر.
+        </p>
+
+        <p>
+          وما يتبقى من الوقت غالبًا لا يكفي حتى للراحة.
+        </p>
+
+        <p>
+          لكنها قالتها ببساطة.
+        </p>
+
+        <p>
+          وكأن الأمر عادي.
+        </p>
+
+        <p>
+          وكأن الإنسان يستطيع أن يتعود على قلة الوقت حتى تصبح راحته شيئًا مؤجلًا دائمًا.
+        </p>
+
+
+        <div class="divider"></div>
+
+
+        <p>
+          لم تكن تعرف أن شخصًا ما كان ينظر إلى الأمر بطريقة مختلفة.
+        </p>
+
+        <p>
+          لم يرَ فتاة لا تملك وقتًا.
+        </p>
+
+        <p>
+          رأى فتاة تعطي وقتها لأشياء كثيرة…
+        </p>
+
+        <p>
+          ولا يتبقى لها منه إلا القليل.
+        </p>
+
+        <p>
+          ولم يرَ شخصًا يقول إن قراءة رواية طويلة صعبة.
+        </p>
+
+        <p>
+          رأى شخصًا يستحق، ولو ليوم واحد، أن يجد شيئًا لطيفًا ينتظره دون أن يطلبه.
+        </p>
+
+        <p>
+          وربما لم يكن أكثر ما لفت الانتباه ابتسامتها أو كلامها.
+        </p>
+
+        <p>
+          كان هناك شيء آخر.
+        </p>
+
+        <p class="highlight">
+          عيناها.
+        </p>
+
+        <p>
+          خلف النظارة، كانت هناك نظرة يصعب وصفها.
+        </p>
+
+        <p>
+          ليست حزينة.
+        </p>
+
+        <p>
+          وليست سعيدة تمامًا.
+        </p>
+
+        <p>
+          لكنها تحمل ذلك الهدوء الغريب الذي يكون في عيون الأشخاص الذين يفكرون في أشياء كثيرة في الوقت نفسه.
+        </p>
+
+        <p>
+          وكان من السهل أن تمر تلك النظرة دون أن يلاحظها أحد.
+        </p>
+
+        <p>
+          لكنها لم تمر.
+        </p>
+
+        <p>
+          لأن بعض التفاصيل الصغيرة تقول عن الإنسان أكثر مما يقوله بنفسه.
+        </p>
+
+
+        <div class="divider"></div>
+
+
+        <p>
+          وهكذا…
+        </p>
+
+        <p>
+          دون أن تعرف،
+        </p>
+
+        <p>
+          بدأت حكاية لم تكن تعرف أنها تخصها.
+        </p>
+
+        <p>
+          حكاية لا تريد منها أن تجد وقتًا إضافيًا.
+        </p>
+
+        <p>
+          ولا أن تنجز شيئًا.
+        </p>
+
+        <p>
+          ولا حتى أن تقول إن الحكاية جميلة.
+        </p>
+
+        <p>
+          كل ما تريده منها…
+        </p>
+
+        <p class="highlight">
+          أن تتوقف قليلًا.
+        </p>
+
+        <p>
+          أن تقرأ.
+        </p>
+
+        <p>
+          وأن تعرف أن رأيها، هذه المرة، يهم فعلًا.
+        </p>
+
+        <p>
+          وأن التعب الذي اعتادت أن تخفيه جيدًا…
+        </p>
+
+        <p>
+          كان واضحًا أكثر مما تتصور.
+        </p>
+
+
+        <div class="divider"></div>
+
+
+        <p>
+          والآن…
+        </p>
+
+        <p>
+          أظن أنك بدأتِ تعرفين من هي بطلة هذه الحكاية.
+        </p>
+
+        <p>
+          لن أقول اسمها.
+        </p>
+
+        <p>
+          أريدكِ أنتِ أن تعرفيه.
+        </p>
+
+        <p>
+          فإذا شعرتِ، ولو للحظة، أن بعض هذه الكلمات تشبهك…
+        </p>
+
+        <p>
+          فربما لم يكن ذلك مجرد صدفة.
+        </p>
+
+
+        <div class="divider"></div>
+
+
+        <p>
+          وقبل أن تكملي، هناك شيء أريد أن أتركه لكِ.
+        </p>
+
+        <p>
+          مساحة لا تحتاجين فيها أن تكوني بخير.
+        </p>
+
+        <p>
+          ولا أن تختاري كلمات مرتبة.
+        </p>
+
+        <p>
+          ولا أن تفكري فيما إذا كان ما ستكتبينه مهمًا أم لا.
+        </p>
+
+        <p>
+          اكتبي أي شيء يخطر في بالك.
+        </p>
+
+        <p>
+          شيئًا لم تجدي وقتًا لتقوليه.
+        </p>
+
+        <p>
+          شيئًا احتفظتِ به لنفسك.
+        </p>
+
+        <p>
+          شيئًا يزعجك.
+        </p>
+
+        <p>
+          شيئًا يسعدك.
+        </p>
+
+        <p>
+          أو حتى مجرد كلمات لا تعرفين لماذا تريدين كتابتها.
+        </p>
+
+        <p>
+          هنا، لا تحتاجين أن تشرحي نفسك لأحد.
+        </p>
+
+        <p class="highlight">
+          اكتبي ما بخاطرك…
+        </p>
+
+        <p>
+          فربما يحتاج الإنسان أحيانًا إلى مكان يتكلم فيه دون أن يقاطعه أحد.
+        </p>
+
+        <p class="highlight">
+          ما الذي يدور في بالك الآن؟
+        </p>
+
+      </div>
+
+
+      <!-- مساحة الكتابة -->
+
+      <div class="writing-area">
+
+        <div class="writing-title">
+          اكتبي ما تريدين...
+        </div>
+
+        <textarea
+          id="message"
+          placeholder="خذي وقتك... واكتبي أي شيء يخطر في بالك."
+        ></textarea>
+
+        <div class="send-area">
+
+          <button
+            class="send-button"
+            id="sendButton"
+            onclick="sendMessage()"
+          >
+            اتركي ما بخاطرك هنا
+          </button>
+
+        </div>
+
+        <div
+          class="success-message"
+          id="successMessage"
+        >
+          وصلتني كلماتك...
+          <br>
+          وشكرًا لأنك تركتِ جزءًا منها هنا.
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <script>
+
+    async function sendMessage() {
+
+      const messageBox = document.getElementById("message");
+      const sendButton = document.getElementById("sendButton");
+      const successMessage = document.getElementById("successMessage");
+
+      const message = messageBox.value.trim();
+
+      if (!message) {
+
+        messageBox.focus();
+
+        return;
+      }
+
+      sendButton.disabled = true;
+      sendButton.textContent = "لحظة...";
+
+      try {
+
+        const response = await fetch(
+          "https://formspree.io/f/mljdbajz",
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+
+            body: JSON.stringify({
+              message: message
+            })
+          }
+        );
+
+
+        if (response.ok) {
+
+          messageBox.value = "";
+
+          sendButton.style.display = "none";
+
+          successMessage.classList.add("show");
+
+        } else {
+
+          sendButton.disabled = false;
+          sendButton.textContent = "حاولي مرة أخرى";
+
+        }
+
+      } catch (error) {
+
+        sendButton.disabled = false;
+        sendButton.textContent = "حاولي مرة أخرى";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>
